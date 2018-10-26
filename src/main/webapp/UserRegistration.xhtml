@@ -11,7 +11,39 @@
     <h:body>
         <ui:composition template="layout/template.xhtml">
             <ui:define name="content">
-                
+                <h:form id="userRegistrationForm">
+                   <p:wizard id="userRegistrationWizard" flowListener="#{userRegistrationController.flowHandler}">
+                   <p:tab id="userRegistration" title="User Registration">
+                       <p:panelGrid columns="2">
+                           <p:outputLabel for="first" value="First:"/>
+                           <p:inputText id="first" value="#{userRegistrationController.current.first}"/>
+                           
+                           <p:outputLabel for="last" value="Last"/>
+                           <p:inputText id="last" value="#{userRegistrationController.current.last}"/>
+                           
+                           <p:outputLabel for="age" value="Age:"/>
+                           <p:inputText id="age" value="#{userRegistrationController.current.age}"/>
+                           
+                           <p:outputLabel for="email" value="Email:"/>
+                           <p:inputText id="email" value="#{userRegistrationController.current.email}"/>
+                           
+                           <p:outputLabel for="enableNotifications" value="Enable Notifications:"/>
+                           <p:selectBooleanCheckbox id="enableNotifications" value="#{userRegistrationController.current.enableNotifications}"/>        
+                       </p:panelGrid>
+                   </p:tab>
+                   <p:tab id="Subscription" title="Subscriptions">
+                       <p:panelGrid columns="2">
+                           <p:outputLabel for="newsletter" value="Newsletter:"/>
+                           <p:selectBooleanCheckbox id="newsletter" value="#{userRegistrationController.current.newsletter}"/>
+                           <p:outputLabel for="emailNotifications" value="Email Notifications:"/>
+                           <p:selectBooleanCheckbox id="emailNotifications" value="#{userRegistrationController.current.emailNotifications}"/>
+                       </p:panelGrid>
+                   </p:tab>
+                   <p:tab id="Confirm" title="Confirm"> 
+                       You are about to create the user...#{userRegistrationController.current.isEnableNotifications}.
+                   </p:tab>
+                   </p:wizard>
+               </h:form>
             </ui:define>
         </ui:composition>
     </h:body>

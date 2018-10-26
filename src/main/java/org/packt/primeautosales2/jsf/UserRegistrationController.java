@@ -10,6 +10,7 @@ import java.io.Serializable;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import org.packt.primeautosales.entity.User;
+import org.primefaces.event.FlowEvent;
 
 /**
  *
@@ -31,5 +32,19 @@ public class UserRegistrationController implements Serializable {
         }
         return current;
     }
+    
+    public String flowHandler (FlowEvent event){
+        if (current !=null) {
+            System.out.println("current: " + current);
+            if (!current.isEnableNotifications()){
+                return "Confirm";
+            }else{
+            return event.getNewStep();
+        }        
+        }  else {
+            return event.getNewStep();
+        }
+ 
+}
     
 }
