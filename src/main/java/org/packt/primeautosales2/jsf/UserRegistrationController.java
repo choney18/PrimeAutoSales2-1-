@@ -7,9 +7,11 @@ package org.packt.primeautosales2.jsf;
 
 
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
-import org.packt.primeautosales.entity.User;
+import org.packt.primeautosales2.entity.User;
+import org.packt.primeautosales2.session.UserFacade;
 import org.primefaces.event.FlowEvent;
 
 /**
@@ -19,6 +21,10 @@ import org.primefaces.event.FlowEvent;
 @Named(value = "userRegistrationController")
 @ViewScoped
 public class UserRegistrationController implements Serializable {
+    
+    @EJB
+    UserFacade ejbFacade;
+    
     private User current;
     /**
      * Creates a new instance of UserRegistrationController
@@ -46,5 +52,11 @@ public class UserRegistrationController implements Serializable {
         }
  
 }
+    
+    public String create(){
+        ejbFacade.create(current);
+        
+        return null;
+    }
     
 }

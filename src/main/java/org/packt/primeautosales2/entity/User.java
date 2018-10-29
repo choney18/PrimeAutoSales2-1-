@@ -3,13 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.packt.primeautosales.entity;
+package org.packt.primeautosales2.entity;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Caleb
  */
-public class User {
+@Entity
+@Table(name="PRIME_USER")
+public class User implements Serializable {
 
     /**
      * @return the first
@@ -108,12 +117,21 @@ public class User {
     public void setEmailNotifications(boolean emailNotifications) {
         this.emailNotifications = emailNotifications;
     }
+    @Id
+    private BigDecimal id;
+    @Column(name="first_name")
     private String first;
+    @Column(name="last_name")
     private String last;
+    @Column(name="age")
     private int age;
+    @Column(name="email")
     private String email;
-    private boolean newsletter;
-    private boolean enableNotifications;
-    private boolean emailNotifications;
+    @Column(name="newsletter")
+    private boolean newsletter = false;
+    @Column(name="enable_Notifications")
+    private boolean enableNotifications = false;
+    @Column(name="email_Notifications")
+    private boolean emailNotifications = false;
     
 }

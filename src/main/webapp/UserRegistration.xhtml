@@ -40,7 +40,9 @@
                        </p:panelGrid>
                    </p:tab>
                    <p:tab id="Confirm" title="Confirm"> 
-                       You are about to create the user...#{userRegistrationController.current.isEnableNotifications}.
+                       You are about to create the user...#{userRegistrationController.current.email}.
+                       <p:commandButton id="createUser" value="Create User"
+                                        action="#{userRegistrationController.create}"/>
                    </p:tab>
                    </p:wizard>
                </h:form>
