@@ -7,6 +7,7 @@ package org.packt.primeautosales2.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,6 +20,20 @@ import javax.persistence.Table;
 @Entity
 @Table(name="PRIME_USER")
 public class User implements Serializable {
+
+    /**
+     * @return the id
+     */
+    public BigInteger getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(BigInteger id) {
+        this.id = id;
+    }
 
     /**
      * @return the first
@@ -118,7 +133,7 @@ public class User implements Serializable {
         this.emailNotifications = emailNotifications;
     }
     @Id
-    private BigDecimal id;
+    private BigInteger id;
     @Column(name="first_name")
     private String first;
     @Column(name="last_name")

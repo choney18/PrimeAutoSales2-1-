@@ -7,7 +7,10 @@ package org.packt.primeautosales2.jsf;
 
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import org.packt.primeautosales2.entity.User;
@@ -54,7 +57,12 @@ public class UserRegistrationController implements Serializable {
 }
     
     public String create(){
+        int userCount = ejbFacade.findAll().size();
+        current.setId(BigInteger.valueOf(userCount + 1));
         ejbFacade.create(current);
+        
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,
+        "Successful User Entry", "Detail: Successful User Entry"));
         
         return null;
     }

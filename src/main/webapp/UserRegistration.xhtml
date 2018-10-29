@@ -12,6 +12,8 @@
         <ui:composition template="layout/template.xhtml">
             <ui:define name="content">
                 <h:form id="userRegistrationForm">
+                    <p:growl id="userRegistrationMessage" showSummary="true"/>
+                    <br/>
                    <p:wizard id="userRegistrationWizard" flowListener="#{userRegistrationController.flowHandler}">
                    <p:tab id="userRegistration" title="User Registration">
                        <p:panelGrid columns="2">
@@ -41,7 +43,7 @@
                    </p:tab>
                    <p:tab id="Confirm" title="Confirm"> 
                        You are about to create the user...#{userRegistrationController.current.email}.
-                       <p:commandButton id="createUser" value="Create User"
+                       <p:commandButton id="createUser" value="Create User" update="userRegistrationMessage"
                                         action="#{userRegistrationController.create}"/>
                    </p:tab>
                    </p:wizard>
